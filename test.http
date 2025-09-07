@@ -1,0 +1,32 @@
+# Test para la aplicación JavaScript (Puerto 3000)
+### Verificar que el servidor está vivo
+GET http://localhost:3000/ping
+
+### Subir archivo CSV a la app JS
+POST http://localhost:3000/upload
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="file"; filename="temperaturas.csv"
+Content-Type: text/csv
+
+< ./temperaturas.csv
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+### Obtener datos históricos de la app JS
+GET http://localhost:3000/historical
+
+# Test para la aplicación Python (Puerto 5000)
+### Subir archivo CSV a la app Python
+POST http://localhost:5000/upload
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="file"; filename="temperaturas.csv"
+Content-Type: text/csv
+
+< ./test.csv
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+### Obtener datos históricos de la app Python
+GET http://localhost:5000/historical
