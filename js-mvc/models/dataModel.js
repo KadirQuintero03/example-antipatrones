@@ -1,6 +1,6 @@
-const fs = require('fs');
-const path = require('path');
-const csv = require('csv-parser');
+import fs from 'fs';
+import path from 'path';
+import csv from 'csv-parser';
 
 function readCSV(filePath, callback) {
     const results = [];
@@ -18,4 +18,4 @@ function loadJSON(filePath) {
     return JSON.parse(fs.readFileSync(filePath));
 }
 
-module.exports = { readCSV, saveJSON, loadJSON };
+export { readCSV, saveJSON, loadJSON };

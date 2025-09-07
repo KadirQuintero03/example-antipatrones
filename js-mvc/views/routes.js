@@ -1,10 +1,11 @@
-const express = require('express');
-const multer = require('multer');
-const { processCSV, getHistoricalData } = require('../controllers/dataController');
+import express from 'express';
+import multer from 'multer';
+import { processCSV, getHistoricalData } from '../controllers/dataController.js';
+
 const router = express.Router();
-const upload = multer({ dest: 'uploads/' });
+const upload = multer({ dest: 'uploads/' }); // middlware
 
 router.post('/upload', upload.single('file'), processCSV);
 router.get('/historical', getHistoricalData);
 
-module.exports = router;
+export default router;
