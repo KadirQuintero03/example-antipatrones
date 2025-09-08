@@ -8,7 +8,7 @@ app = FastAPI()
 
 @app.post("/upload")
 async def upload_csv(file: UploadFile = File(...)):
-    result = await process_csv_usecase(file, csv_repository=CSVRepository(), json_repository=JSONRepository())
+    result = await process_csv_usecase(file, csv_repo=CSVRepository(), json_repo=JSONRepository())
     return {"message": result}
 
 @app.get('/')

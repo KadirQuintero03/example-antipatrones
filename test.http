@@ -7,28 +7,25 @@ POST http://localhost:3000/upload
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
-Content-Disposition: form-data; name="file"; filename="test_data.csv"
+Content-Disposition: form-data; name="file"; filename="temperaturas.csv"
 Content-Type: text/csv
 
-< ./test_data.csv
+< ./temperaturas.csv
 ------WebKitFormBoundary7MA4YWxkTrZu0gW--
 
 ### Obtener datos históricos de la app JS
 GET http://localhost:3000/historical
 
-# Test para la aplicación Python (Puerto 8000)
-### Verificar que el servidor Python está vivo
-GET http://localhost:8000/ping
-
+# Test para la aplicación Python (Puerto 5000)
 ### Subir archivo CSV a la app Python
 POST http://localhost:8000/upload
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
-Content-Disposition: form-data; name="file"; filename="test_data.csv"
+Content-Disposition: form-data; name="file"; filename="temperaturas_50_con_promedio.csv"
 Content-Type: text/csv
 
-< ./test_data.csv
+< ./temperaturas_50_con_promedio.csv
 ------WebKitFormBoundary7MA4YWxkTrZu0gW--
 
 ### Obtener datos históricos de la app Python
