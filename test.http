@@ -18,15 +18,15 @@ GET http://localhost:3000/historical
 
 # Test para la aplicación Python (Puerto 5000)
 ### Subir archivo CSV a la app Python
-POST http://localhost:8000/upload
+POST http://localhost:5000/upload
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
-Content-Disposition: form-data; name="file"; filename="temperaturas_50_con_promedio.csv"
+Content-Disposition: form-data; name="file"; filename="temperaturas.csv"
 Content-Type: text/csv
 
-< ./temperaturas_50_con_promedio.csv
+< ./test.csv
 ------WebKitFormBoundary7MA4YWxkTrZu0gW--
 
 ### Obtener datos históricos de la app Python
-GET http://localhost:8000/historical
+GET http://localhost:5000/historical

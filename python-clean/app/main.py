@@ -11,10 +11,6 @@ async def upload_csv(file: UploadFile = File(...)):
     result = await process_csv_usecase(file, csv_repo=CSVRepository(), json_repo=JSONRepository())
     return {"message": result}
 
-@app.get('/')
-def get_health():
-    return {"message": "I Life"}
-
 @app.get("/historical")
 def get_historical():
     return get_historical_usecase(json_repo=JSONRepository())
