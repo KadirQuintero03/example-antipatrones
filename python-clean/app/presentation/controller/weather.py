@@ -17,3 +17,6 @@ class WeatherController:
         await self._sevice.execute(upload_instancie)
         
         return {"message": "Se ha guardado correctamente"}
+    
+    def get_weather(self):
+        return self._sevice.get_weather_all()

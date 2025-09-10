@@ -4,7 +4,7 @@ import datetime
 
 @dataclass
 class WeatherData:
+    timestamp: str
+    city: str
+    unity: str
     temperature: float
-    humidity: float
-    timestamp: datetime.datetime
-    station_id: str

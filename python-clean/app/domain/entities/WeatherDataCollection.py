@@ -1,5 +1,4 @@
 from typing import List
-
 from app.domain.entities.weather_data import WeatherData
 
 class WeatherDataCollection:

@@ -16,17 +16,31 @@ Content-Type: text/csv
 ### Obtener datos históricos de la app JS
 GET http://localhost:3000/historical
 
-# Test para la aplicación Python (Puerto 5000)
+# Test para la aplicación Python (Puerto 8000)
+### Verificar que el servidor FastAPI está funcionando
+GET http://localhost:8000/docs
+
 ### Subir archivo CSV a la app Python
-POST http://localhost:5000/upload
+POST http://localhost:8000/api/weather/
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
-Content-Disposition: form-data; name="file"; filename="temperaturas.csv"
+Content-Disposition: form-data; name="file"; filename="temperaturas_50_con_promedio.csv"
 Content-Type: text/csv
 
-< ./test.csv
+< ./temperaturas_50_con_promedio.csv
 ------WebKitFormBoundary7MA4YWxkTrZu0gW--
 
-### Obtener datos históricos de la app Python
-GET http://localhost:5000/historical
+### Subir archivo JSON a la app Python
+POST http://localhost:8000/api/weather/
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="file"; filename="data.json"
+Content-Type: application/json
+
+< ./js-mvc/data.json
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+### Obtener datos históricos
+GET http://localhost:8000/api/weather/

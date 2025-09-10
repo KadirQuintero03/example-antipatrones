@@ -16,4 +16,4 @@ class factory_parser:
         parser_class = self._parser.get(file_extension.lower())
         if not parser_class:
             raise ValueError(f"Unsupported file format: {file_extension}")
-        return parser_class
+        return parser_class()
