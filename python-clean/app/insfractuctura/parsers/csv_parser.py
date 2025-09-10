@@ -10,7 +10,6 @@ class CSVWeatherParser(DataParser):
         df = pd.read_csv(path)
         weather_list = []
         for _,row in df.iterrows():
-            print(row)
             weather_data = WeatherData(
                 timestamp=row['fecha'],
                 city=str(row['ciudad']).strip(),

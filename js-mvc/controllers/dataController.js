@@ -5,6 +5,7 @@ import { readCSV, saveJSON, loadJSON } from '../models/dataModel.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// proceso para lanzar la peticion y poder escribr 
 function processCSV(req, res) {
     const csvPath = req.file.path
     readCSV(csvPath, (data) => {

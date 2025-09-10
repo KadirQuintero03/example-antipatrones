@@ -10,7 +10,7 @@ class factory_parser:
             '.json':JSONWeatherParser,
             '.csv':CSVWeatherParser
         }
-        pass
+        
     
     def create_parser(self,file_extension:str) -> DataParser:
         parser_class = self._parser.get(file_extension.lower())
