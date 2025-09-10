@@ -2,7 +2,7 @@
 
 ## Contexto del Problema
 
-El desarrollador "Juanito", familiarizado únicamente con JavaScript y el patrón MVC, implementó un microservicio para procesar archivos CSV de temperatura usando solo JS y programación procedural, ignorando que Python es más adecuado para procesamiento científico de datos.
+El desarrollador "Juanito" recibió la asignación en su empresa de crear un microservicio para procesar archivos CSV con datos de temperatura de diferentes ciudades. Sin ganas de implementar algo que pudiera tomarle más tiempo y sin intención de aprender nuevas herramientas, Juanito implementó este microservicio usando únicamente JavaScript (porque es el único lenguaje que conoce), una arquitectura de carpetas MVC (porque le pareció perfecta, siendo la única que ha utilizado) y basándose en programación procedural.
 
 ### Requerimientos del microservicio
 - Recibir archivos CSV con datos meteorológicos
