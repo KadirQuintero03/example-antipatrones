@@ -17,7 +17,7 @@ El Golden Hammer ocurre cuando un desarrollador usa siempre la misma tecnología
 ### Ejemplo de mala implementación (JS + MVC + procedural)
 - Todo el procesamiento de datos se hace con JS y Express.
 - No hay separación clara de responsabilidades ni uso de herramientas científicas.
-- El código es difícil de escalar y mantener para análisis avanzados.
+- El código es difícil de escalar y mantener para análisis avanzados e incluso de entender.
 
 ## Solución: Clean Architecture + SOLID en Python
 
@@ -30,23 +30,33 @@ Se reimplementó el microservicio usando Python, aplicando Clean Architecture y 
 ## Estructura de Carpetas
 
 ```
-js-mvc/
-  app.js
-  controllers/
-    dataController.js
-  models/
-    dataModel.js
-  views/
-    routes.js
 python-clean/
-  app/
-    main.py
-    repositories/
-      csv_repository.py
-      json_repository.py
-    usecases/
-      process_csv_usecase.py
-      get_historical_usecase.py
+├── app/
+│   ├── main.py                           # Punto de entrada
+│   ├── domain/                           # Capa de Dominio
+│   │   ├── entities/                     # Entidades de negocio
+│   │   │   ├── weather_data.py          # Entidad WeatherData
+│   │   │   └── WeatherDataCollection.py  # Colección de datos
+│   │   ├── dtos/                        # Data Transfer Objects
+│   │   │   └── weather_data.py          # DTO para upload
+│   │   └── interfaces/                  # Contratos/Abstracciones
+│   │       └── data_parser.py           # Interface para parsers
+│   ├── infrastructure/                  # Capa de Infraestructura
+│   │   ├── factories/
+│   │   │   └── parser_factory.py        # Factory Pattern
+│   │   └── parsers/                     # Implementaciones concretas
+│   │       ├── csv_parser.py            # Parser CSV con pandas
+│   │       ├── json_parser.py           # Parser JSON
+│   │       └── xml_parser.py            # Parser XML
+│   ├── repositories/                    # Acceso a datos
+│   │   └── weather_repository.py        # Repository Pattern
+│   ├── usecases/                        # Casos de uso (lógica de negocio)
+│   │   └── process_weather.py           # Procesar archivos weather
+│   └── presentation/                    # Capa de Presentación
+│       ├── controller/
+│       │   └── weather.py               # Controller
+│       └── routes/
+│           └── routes.py                # Rutas y DI
 ```
 
 ## ¿Por qué es mejor la solución en Python?
