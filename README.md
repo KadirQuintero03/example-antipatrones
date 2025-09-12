@@ -21,6 +21,56 @@ El Golden Hammer ocurre cuando un desarrollador usa siempre la misma tecnología
 
 ## Solución: Clean Architecture + SOLID en Python
 
+```mermaid
+classDiagram
+    class WeatherData {
+        -String timestamp
+        -String city
+        -String unity
+        -Float temperature
+        +getTimestamp() String
+        +getCity() String
+        +getUnity() String
+        +getTemperature() Float
+        +setTimestamp(String)
+        +setCity(String)
+        +setUnity(String)
+        +setTemperature(Float)
+        +toDict() Dictionary
+    }
+    
+    class WeatherDataCollection {
+        -List~WeatherData~ data
+        +getData() List~WeatherData~
+        +addData(WeatherData)
+    }
+    
+    class DataParser {
+        <<interface>>
+        +parse(String path) WeatherDataCollection*
+    }
+    
+    class CSVWeatherParser {
+        +parse(String path) WeatherDataCollection
+    }
+    
+    class JSONWeatherParser {
+        +parse(String path) WeatherDataCollection
+    }
+    
+    class FactoryParser {
+        -Map~String, DataParser~ parsers
+        +create_parser(String file_extension) DataParser
+    }
+    
+    %% Relaciones
+    WeatherDataCollection "1" *-- "*" WeatherData : contains
+    DataParser ..> WeatherDataCollection : creates
+    CSVWeatherParser ..|> DataParser : implements
+    JSONWeatherParser ..|> DataParser : implements
+    FactoryParser --> DataParser : creates
+```
+
 Se reimplementó el microservicio usando Python, aplicando Clean Architecture y principios SOLID:
 - **Separación de responsabilidades:** Repositorios para acceso a datos, casos de uso para lógica de negocio, rutas para interacción con el usuario.
 - **Inyección de dependencias:** Permite cambiar fácilmente la fuente de datos o la lógica sin modificar el resto del sistema.
